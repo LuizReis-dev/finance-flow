@@ -14,12 +14,15 @@ public class OperationType {
 
     private String name;
 
+    private Integer status;
+
     public OperationType() {
     }
 
-    public OperationType(Long id, String name) {
+    public OperationType(Long id, String name, Integer status) {
         this.id = id;
         this.name = name;
+        this.status = status;
     }
 
     public Long getId() {
@@ -36,6 +39,14 @@ public class OperationType {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @Override
