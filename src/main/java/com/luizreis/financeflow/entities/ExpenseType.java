@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_operation_type")
+@Table(name = "tb_expense_types")
 public class ExpenseType {
 
     @Id

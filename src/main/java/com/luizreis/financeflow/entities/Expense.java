@@ -6,7 +6,7 @@ import java.time.Instant;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_financial_operation")
+@Table(name = "tb_expenses")
 public class Expense {
 
     @Id
