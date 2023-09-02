@@ -1,6 +1,6 @@
 package com.luizreis.financeflow.services;
 
-import com.luizreis.financeflow.dtos.ExpenseTypeDTO;
+import com.luizreis.financeflow.dtos.expensetype.ExpenseTypeDTO;
 import com.luizreis.financeflow.entities.ExpenseType;
 import com.luizreis.financeflow.repositories.ExpenseTypeRepository;
 import org.springframework.stereotype.Service;

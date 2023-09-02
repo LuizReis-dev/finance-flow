@@ -1,4 +1,4 @@
-package com.luizreis.financeflow.dtos;
+package com.luizreis.financeflow.dtos.expensetype;
 
 import com.luizreis.financeflow.entities.ExpenseType;
 

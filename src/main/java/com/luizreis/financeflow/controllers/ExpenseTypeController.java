@@ -1,6 +1,6 @@
 package com.luizreis.financeflow.controllers;
 
-import com.luizreis.financeflow.dtos.ExpenseTypeDTO;
+import com.luizreis.financeflow.dtos.expensetype.ExpenseTypeDTO;
 import com.luizreis.financeflow.services.ExpenseTypeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
