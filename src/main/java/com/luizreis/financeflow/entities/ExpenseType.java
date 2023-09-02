@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tb_operation_type")
-public class OperationType {
+public class ExpenseType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,10 +16,10 @@ public class OperationType {
 
     private Integer status;
 
-    public OperationType() {
+    public ExpenseType() {
     }
 
-    public OperationType(Long id, String name, Integer status) {
+    public ExpenseType(Long id, String name, Integer status) {
         this.id = id;
         this.name = name;
         this.status = status;
@@ -53,7 +53,7 @@ public class OperationType {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OperationType that = (OperationType) o;
+        ExpenseType that = (ExpenseType) o;
         return Objects.equals(id, that.id);
     }
 

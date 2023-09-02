@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tb_financial_operation")
-public class FinancialOperation {
+public class Expense {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,19 +15,19 @@ public class FinancialOperation {
     private Double value;
     @ManyToOne
     @JoinColumn(name = "operation_type_id")
-    private OperationType operationType;
+    private ExpenseType expenseType;
     @Column(columnDefinition = "TEXT")
     private String description;
     @Column(name = "registered_at")
     private Instant registeredAt;
 
-    public FinancialOperation() {
+    public Expense() {
     }
 
-    public FinancialOperation(Long id, Double value, OperationType operationType, String description, Instant registeredAt) {
+    public Expense(Long id, Double value, ExpenseType expenseType, String description, Instant registeredAt) {
         this.id = id;
         this.value = value;
-        this.operationType = operationType;
+        this.expenseType = expenseType;
         this.description = description;
         this.registeredAt = registeredAt;
     }
@@ -48,12 +48,12 @@ public class FinancialOperation {
         this.value = value;
     }
 
-    public OperationType getOperationType() {
-        return operationType;
+    public ExpenseType getOperationType() {
+        return expenseType;
     }
 
-    public void setOperationType(OperationType operationType) {
-        this.operationType = operationType;
+    public void setOperationType(ExpenseType expenseType) {
+        this.expenseType = expenseType;
     }
 
     public String getDescription() {
@@ -76,7 +76,7 @@ public class FinancialOperation {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        FinancialOperation that = (FinancialOperation) o;
+        Expense that = (Expense) o;
         return Objects.equals(id, that.id);
     }
 

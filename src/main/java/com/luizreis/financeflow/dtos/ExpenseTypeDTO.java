@@ -1,11 +1,11 @@
 package com.luizreis.financeflow.dtos;
 
-public class OperationTypeDTO {
+public class ExpenseTypeDTO {
 
     private Long id;
     private String name;
 
-    public OperationTypeDTO(Long id, String name) {
+    public ExpenseTypeDTO(Long id, String name) {
         this.id = id;
         this.name = name;
     }
