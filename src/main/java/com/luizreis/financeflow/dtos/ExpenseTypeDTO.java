@@ -1,5 +1,7 @@
 package com.luizreis.financeflow.dtos;
 
+import com.luizreis.financeflow.entities.ExpenseType;
+
 public class ExpenseTypeDTO {
 
     private Long id;
@@ -8,6 +10,11 @@ public class ExpenseTypeDTO {
     public ExpenseTypeDTO(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public ExpenseTypeDTO(ExpenseType entity) {
+        this.id = entity.getId();
+        this.name = entity.getName();
     }
 
     public Long getId() {
