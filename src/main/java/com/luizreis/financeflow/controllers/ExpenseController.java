@@ -25,7 +25,12 @@ public class ExpenseController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ExpenseCreatedDTO>> getAll(){
+    public ResponseEntity<List<ExpenseCreatedDTO>> getAll() {
         return ResponseEntity.ok().body(service.getAll());
+    }
+
+    @GetMapping(value = "/expense-type/{id}")
+    public ResponseEntity<List<ExpenseCreatedDTO>> getAllByExpenseType(@PathVariable Long id){
+        return ResponseEntity.ok().body(service.getAllByExpenseType(id));
     }
 }

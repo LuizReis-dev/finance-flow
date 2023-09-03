@@ -7,7 +7,6 @@ import com.luizreis.financeflow.entities.ExpenseType;
 import com.luizreis.financeflow.repositories.ExpenseRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -35,5 +34,9 @@ public class ExpenseService {
 
     public List<ExpenseCreatedDTO> getAll(){
         return repository.getAllExpenses();
+    }
+
+    public List<ExpenseCreatedDTO> getAllByExpenseType(Long id) {
+        return repository.getAllExpensesByExpenseType(id);
     }
 }
