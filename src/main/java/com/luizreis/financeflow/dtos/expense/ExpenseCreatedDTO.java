@@ -1,6 +1,7 @@
 package com.luizreis.financeflow.dtos.expense;
 
 import java.time.Instant;
+import java.util.Date;
 
 public class ExpenseCreatedDTO {
 
@@ -8,9 +9,9 @@ public class ExpenseCreatedDTO {
     private Double value;
     private String expenseType;
     private String description;
-    private Instant registeredAt;
+    private Date registeredAt;
 
-    public ExpenseCreatedDTO(Long id, Double value, String expenseType, String description, Instant registeredAt) {
+    public ExpenseCreatedDTO(Long id, Double value, String expenseType, String description, Date registeredAt) {
         this.id = id;
         this.value = value;
         this.expenseType = expenseType;
@@ -34,7 +35,7 @@ public class ExpenseCreatedDTO {
         return description;
     }
 
-    public Instant getRegisteredAt() {
+    public Date getRegisteredAt() {
         return registeredAt;
     }
 }
