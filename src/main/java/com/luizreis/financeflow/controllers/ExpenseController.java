@@ -2,6 +2,7 @@ package com.luizreis.financeflow.controllers;
 
 import com.luizreis.financeflow.dtos.expense.ExpenseCreatedDTO;
 import com.luizreis.financeflow.dtos.expense.ExpenseDTO;
+import com.luizreis.financeflow.dtos.summary.SumExpensePerExpenseTypeDTO;
 import com.luizreis.financeflow.services.ExpenseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,5 +33,10 @@ public class ExpenseController {
     @GetMapping(value = "/expense-type/{id}")
     public ResponseEntity<List<ExpenseCreatedDTO>> getAllByExpenseType(@PathVariable Long id){
         return ResponseEntity.ok().body(service.getAllByExpenseType(id));
+    }
+
+    @GetMapping("/summary")
+    public ResponseEntity<List<SumExpensePerExpenseTypeDTO>> getSumGroupByExpenseType(){
+        return ResponseEntity.ok().body(service.getSumGroupByExpenseType());
     }
 }

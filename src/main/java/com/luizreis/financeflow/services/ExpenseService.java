@@ -2,6 +2,7 @@ package com.luizreis.financeflow.services;
 
 import com.luizreis.financeflow.dtos.expense.ExpenseCreatedDTO;
 import com.luizreis.financeflow.dtos.expense.ExpenseDTO;
+import com.luizreis.financeflow.dtos.summary.SumExpensePerExpenseTypeDTO;
 import com.luizreis.financeflow.entities.Expense;
 import com.luizreis.financeflow.entities.ExpenseType;
 import com.luizreis.financeflow.repositories.ExpenseRepository;
@@ -38,5 +39,12 @@ public class ExpenseService {
 
     public List<ExpenseCreatedDTO> getAllByExpenseType(Long id) {
         return repository.getAllExpensesByExpenseType(id);
+    }
+
+    public List<SumExpensePerExpenseTypeDTO> getSumGroupByExpenseType() {
+        List<SumExpensePerExpenseTypeDTO> list = repository.getSumGroupByExpenseType();
+        SumExpensePerExpenseTypeDTO total = repository.getSum();
+        list.add(total);
+        return list;
     }
 }
