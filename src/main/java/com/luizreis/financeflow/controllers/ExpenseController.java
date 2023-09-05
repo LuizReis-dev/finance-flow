@@ -25,18 +25,25 @@ public class ExpenseController {
         return ResponseEntity.ok().body(returnDto);
     }
 
-    @GetMapping
-    public ResponseEntity<List<ExpenseCreatedDTO>> getAll() {
-        return ResponseEntity.ok().body(service.getAll());
+    @GetMapping()
+    public ResponseEntity<List<ExpenseCreatedDTO>> getAll(
+            @RequestParam(name = "minDate", defaultValue = "") String minDate,
+            @RequestParam(name = "maxDate", defaultValue = "") String maxDate) {
+        return ResponseEntity.ok().body(service.getAll(minDate, maxDate));
     }
 
     @GetMapping(value = "/expense-type/{id}")
-    public ResponseEntity<List<ExpenseCreatedDTO>> getAllByExpenseType(@PathVariable Long id){
-        return ResponseEntity.ok().body(service.getAllByExpenseType(id));
+    public ResponseEntity<List<ExpenseCreatedDTO>> getAllByExpenseType(
+            @PathVariable Long id,
+            @RequestParam(name = "minDate", defaultValue = "") String minDate,
+            @RequestParam(name = "maxDate", defaultValue = "") String maxDate){
+        return ResponseEntity.ok().body(service.getAllByExpenseType(id, minDate, maxDate));
     }
 
     @GetMapping("/summary")
-    public ResponseEntity<List<SumExpensePerExpenseTypeDTO>> getSumGroupByExpenseType(){
-        return ResponseEntity.ok().body(service.getSumGroupByExpenseType());
+    public ResponseEntity<List<SumExpensePerExpenseTypeDTO>> getSumGroupByExpenseType(
+            @RequestParam(name = "minDate", defaultValue = "") String minDate,
+            @RequestParam(name = "maxDate", defaultValue = "") String maxDate){
+        return ResponseEntity.ok().body(service.getSumGroupByExpenseType(minDate, maxDate));
     }
 }

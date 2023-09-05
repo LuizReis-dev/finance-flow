@@ -2,6 +2,7 @@ package com.luizreis.financeflow.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -19,12 +20,12 @@ public class Expense {
     @Column(columnDefinition = "TEXT")
     private String description;
     @Column(name = "registered_at")
-    private Date registeredAt;
+    private LocalDate registeredAt;
 
     public Expense() {
     }
 
-    public Expense(Long id, Double value, ExpenseType expenseType, String description, Date registeredAt) {
+    public Expense(Long id, Double value, ExpenseType expenseType, String description, LocalDate registeredAt) {
         this.id = id;
         this.value = value;
         this.expenseType = expenseType;
@@ -64,11 +65,11 @@ public class Expense {
         this.description = description;
     }
 
-    public Date getRegisteredAt() {
+    public LocalDate getRegisteredAt() {
         return registeredAt;
     }
 
-    public void setRegisteredAt(Date registeredAt) {
+    public void setRegisteredAt(LocalDate registeredAt) {
         this.registeredAt = registeredAt;
     }
 

@@ -1,6 +1,7 @@
 package com.luizreis.financeflow.dtos.expense;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ExpenseDTO {
@@ -9,9 +10,9 @@ public class ExpenseDTO {
     private Double value;
     private Long expenseTypeId;
     private String description;
-    private Date registeredAt;
+    private LocalDate registeredAt;
 
-    public ExpenseDTO(Long id, Double value, Long expenseTypeId, String description, Date registeredAt) {
+    public ExpenseDTO(Long id, Double value, Long expenseTypeId, String description, LocalDate registeredAt) {
         this.id = id;
         this.value = value;
         this.expenseTypeId = expenseTypeId;
@@ -31,7 +32,7 @@ public class ExpenseDTO {
         return description;
     }
 
-    public Date getRegisteredAt() {
+    public LocalDate getRegisteredAt() {
         return registeredAt;
     }
 }
