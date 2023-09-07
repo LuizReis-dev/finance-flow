@@ -6,8 +6,10 @@ import com.luizreis.financeflow.dtos.summary.SumExpensePerExpenseTypeDTO;
 import com.luizreis.financeflow.entities.Expense;
 import com.luizreis.financeflow.entities.ExpenseType;
 import com.luizreis.financeflow.repositories.ExpenseRepository;
+import com.luizreis.financeflow.services.exceptions.ResourceNotFoundException;
 import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -63,6 +65,14 @@ public class ExpenseService {
         SumExpensePerExpenseTypeDTO total = repository.getSum(min, max);
         list.add(total);
         return list;
+    }
+
+    @Transactional
+    public void delete(Long id){
+        if(!repository.existsById(id)){
+            throw new ResourceNotFoundException("Expense not found!");
+        }
+        repository.deleteById(id);
     }
 
     private LocalDate validateMaxDate(String maxDate) {

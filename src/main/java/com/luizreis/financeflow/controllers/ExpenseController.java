@@ -46,4 +46,12 @@ public class ExpenseController {
             @RequestParam(name = "maxDate", defaultValue = "") String maxDate){
         return ResponseEntity.ok().body(service.getSumGroupByExpenseType(minDate, maxDate));
     }
+
+    @DeleteMapping(value="/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        service.delete(id);
+
+        return ResponseEntity.noContent().build();
+    }
+
 }
