@@ -7,22 +7,15 @@ import com.luizreis.financeflow.entities.Expense;
 import com.luizreis.financeflow.entities.ExpenseType;
 import com.luizreis.financeflow.repositories.ExpenseRepository;
 import com.luizreis.financeflow.services.exceptions.ResourceNotFoundException;
-import org.springframework.cglib.core.Local;
+import com.luizreis.financeflow.services.utils.Validate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeParseException;
-import java.util.Date;
 import java.util.List;
 
 @Service
 public class ExpenseService {
-
-    private final LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
-
     private ExpenseRepository repository;
 
     public ExpenseService(ExpenseRepository repository) {
@@ -44,22 +37,22 @@ public class ExpenseService {
     }
 
     public List<ExpenseCreatedDTO> getAll(String minDate, String maxDate){
-        LocalDate min = validateMinDate(minDate);
-        LocalDate max = validateMaxDate(maxDate);
+        LocalDate min = Validate.validateMinDate(minDate);
+        LocalDate max = Validate.validateMaxDate(maxDate);
 
         return repository.getAllExpenses(min, max);
     }
 
     public List<ExpenseCreatedDTO> getAllByExpenseType(Long id, String minDate, String maxDate) {
-        LocalDate min = validateMinDate(minDate);
-        LocalDate max = validateMaxDate(maxDate);
+        LocalDate min = Validate.validateMinDate(minDate);
+        LocalDate max = Validate.validateMaxDate(maxDate);
 
         return repository.getAllExpensesByExpenseType(id, min, max);
     }
 
     public List<SumExpensePerExpenseTypeDTO> getSumGroupByExpenseType(String minDate, String maxDate) {
-        LocalDate min = validateMinDate(minDate);
-        LocalDate max = validateMaxDate(maxDate);
+        LocalDate min = Validate.validateMinDate(minDate);
+        LocalDate max = Validate.validateMaxDate(maxDate);
 
         List<SumExpensePerExpenseTypeDTO> list = repository.getSumGroupByExpenseType(min, max);
         SumExpensePerExpenseTypeDTO total = repository.getSum(min, max);
@@ -75,23 +68,5 @@ public class ExpenseService {
         repository.deleteById(id);
     }
 
-    private LocalDate validateMaxDate(String maxDate) {
-        LocalDate max;
-        try{
-            max = LocalDate.parse(maxDate);
-        }catch(DateTimeParseException e){
-            max = today;
-        }
-        return max;
-    }
 
-    private LocalDate validateMinDate(String minDate){
-        LocalDate min;
-        try{
-            min = LocalDate.parse(minDate);
-        }catch(DateTimeParseException e){
-            min = today.minusMonths(1L);
-        }
-        return min;
-    }
 }
